@@ -7,12 +7,24 @@ import auscultawear3 from "./projects-images/auscultawear2.png";
 import mmwave1 from "./projects-images/mmwave1.png";
 import mmwave2 from "./projects-images/mmwave2.png";
 import mmwave3 from "./projects-images/mmwave3.png";
+import cashly1 from "./projects-images/cashly1.png";
+import cashly2 from "./projects-images/cashly2.png";
 import cashly3 from "./projects-images/cashly3.png";
 import cashly4 from "./projects-images/cashly4.png";
 import fpga from "./projects-images/FPGA.mp4";
 import tuldokbenta1 from "./projects-images/tuldokbenta1.png";
 import tuldokbenta2 from "./projects-images/tuldokbenta2.png";
 import tuldokbenta3 from "./projects-images/tuldokbenta3.png";
+import tuldokbenta4 from "./projects-images/tuldokbenta4.png";
+import tuldokbenta5 from "./projects-images/tuldokbenta5.png";
+import tuldokbenta6 from "./projects-images/tuldokbenta6.png";
+import portfolio1 from "./projects-images/portfolio1.png";
+import portfolio2 from "./projects-images/portfolio2.png";
+import portfolio3 from "./projects-images/portfolio3.png";
+import rubiks1 from "./projects-images/rubiks1.png";
+import rubiks2 from "./projects-images/rubiks2.png";
+import rubiks3 from "./projects-images/rubiks3.png";
+import rubiks4 from "./projects-images/rubiks4.png";
 
 const projects = [
   {
@@ -68,7 +80,7 @@ const projects = [
     title: "Cashly",
     description:
       "A cross-platform wallet application deployed as a web app.",
-    media: [cashly3, cashly4],
+    media: [cashly1, cashly2, cashly3, cashly4],
     doclink: "",
     gitlink: "https://github.com/lyle0129/Cashly.git",
     demolink: "https://cashly-web.vercel.app/login",
@@ -78,11 +90,31 @@ const projects = [
     title: "TuldokBenta",
     description:
       "A user-friendly, self-setup POS system for small businesses.",
-    media: [tuldokbenta1, tuldokbenta2, tuldokbenta3],
+    media: [tuldokbenta4, tuldokbenta5, tuldokbenta6, tuldokbenta1, tuldokbenta2, tuldokbenta3],
     doclink: "",
     gitlink: "https://github.com/lyle0129/TuldokBenta.git",
     demolink: "https://tuldokbenta-demo.vercel.app",
     technologies: ["ReactJS", "ExpressJS", "Simple Auth", "PostgreSQL", "Tailwind CSS", "NeonDB", "Render", "Vercel"],
+  },
+  {
+    title: "Website Portfolio",
+    description:
+      "A Personal portfolio showcasing my projects and skills, with a clean simplistic design.",
+    media: [portfolio1, portfolio2, portfolio3],
+    doclink: "",
+    gitlink: "https://github.com/lyle0129/lyle-trillanes-portfolio.git",
+    demolink: "https://lyle-trillanes.vercel.app/",
+    technologies: ["ReactJS", "Tailwind CSS", "Vercel"],
+  },
+  {
+    title: "Rubiks Race",
+    description:
+      "An online recreation of me and my girlfriend's favorite board game to play.",
+    media: [rubiks1, rubiks2, rubiks3, rubiks4],
+    doclink: "",
+    gitlink: "https://github.com/lyle0129/Rubiks-Race.git",
+    demolink: "https://rubiks-race.vercel.app/",
+    technologies: ["ReactJS", "ExpressJS", "Socket.io", "Tailwind CSS", "Render", "Vercel"],
   },
 ];
 

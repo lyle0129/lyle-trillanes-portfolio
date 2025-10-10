@@ -76,14 +76,6 @@ export default function Contact() {
           </span>
         </div>
       </div>
-
-      {/* Email Button */}
-      <a
-        href="mailto:lyledenzell29@gmail.com"
-        className="px-6 py-3 bg-[#8b5e34] text-white rounded-xl hover:bg-[#734b2b] transition"
-      >
-        Email Me
-      </a>
     </section>
   );
 }
