@@ -6,7 +6,7 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // Prevent body scroll when a modal is open
+  // Prevent body scroll when modal is open
   useEffect(() => {
     if (selectedProject || selectedImage) {
       document.body.style.overflow = "hidden";
@@ -14,6 +14,18 @@ export default function Projects() {
       document.body.style.overflow = "";
     }
   }, [selectedProject, selectedImage]);
+
+  // Close modal on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setSelectedProject(null);
+        setSelectedImage(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
     <section id="projects" className="py-16 px-4 sm:px-8">
@@ -35,10 +47,10 @@ export default function Projects() {
               </p>
             </div>
             <button
-            onClick={() => setSelectedProject(project)}
-            className="mt-auto bg-[#8b5e34] hover:bg-[#704a29] dark:bg-[#d7b693] dark:hover:bg-[#c2a67e] text-white dark:text-[#1c1917] px-4 py-2 rounded-lg transition-colors"
+              onClick={() => setSelectedProject(project)}
+              className="mt-auto bg-[#8b5e34] hover:bg-[#704a29] dark:bg-[#d7b693] dark:hover:bg-[#c2a67e] text-white dark:text-[#1c1917] px-4 py-2 rounded-lg transition-colors"
             >
-            View Details
+              View Details
             </button>
           </div>
         ))}
@@ -46,8 +58,14 @@ export default function Projects() {
 
       {/* Project Details Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4 sm:p-6">
-          <div className="bg-white dark:bg-[#2b2521] p-6 rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative">
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4 sm:p-6"
+          onClick={() => setSelectedProject(null)} // close on outside click
+        >
+          <div
+            className="bg-white dark:bg-[#2b2521] p-6 rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative"
+            onClick={(e) => e.stopPropagation()} // prevent closing on inside click
+          >
             {/* Close Button */}
             <button
               onClick={() => setSelectedProject(null)}
@@ -65,55 +83,55 @@ export default function Projects() {
 
             {/* Media Section */}
             <div className="mb-2 text-sm text-center text-[#8b5e34] dark:text-[#d7b693] opacity-80">
-            Click on an image to view it larger
+              Click on an image to view it larger
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-            {selectedProject.media.map((src, idx) => (
+              {selectedProject.media.map((src, idx) => (
                 <div
-                key={idx}
-                className="rounded-lg overflow-hidden border border-[#d9c8b4] dark:border-[#3a322e] flex items-center justify-center bg-gray-100 dark:bg-[#1a1613] cursor-pointer hover:opacity-80 transition"
-                onClick={() => {
+                  key={idx}
+                  className="rounded-lg overflow-hidden border border-[#d9c8b4] dark:border-[#3a322e] flex items-center justify-center bg-gray-100 dark:bg-[#1a1613] cursor-pointer hover:opacity-80 transition"
+                  onClick={() => {
                     if (!selectedProject.video) setSelectedImage(src);
-                }}
+                  }}
                 >
-                {selectedProject.video ? (
+                  {selectedProject.video ? (
                     <video
-                    src={src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-auto max-h-[60vh] object-contain rounded-lg"
+                      src={src}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-auto max-h-[60vh] object-contain rounded-lg"
                     />
-                ) : (
+                  ) : (
                     <img
-                    src={src}
-                    alt={`${selectedProject.title} screenshot ${idx + 1}`}
-                    className="w-full h-48 sm:h-56 object-cover"
+                      src={src}
+                      alt={`${selectedProject.title} screenshot ${idx + 1}`}
+                      className="w-full h-48 sm:h-56 object-cover"
                     />
-                )}
+                  )}
                 </div>
-            ))}
+              ))}
             </div>
 
             {/* Tech Stack */}
-            {selectedProject.technologies && selectedProject.technologies.length > 0 && (
-            <div className="mt-4 mb-6">
+            {selectedProject.technologies?.length > 0 && (
+              <div className="mt-4 mb-6">
                 <h3 className="text-md font-semibold text-[#3e2f1c] dark:text-[#f4e9dc] mb-2">
-                Technologies Used
+                  Technologies Used
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                {selectedProject.technologies.map((tech, idx) => (
+                  {selectedProject.technologies.map((tech, idx) => (
                     <span
-                    key={idx}
-                    className="px-3 py-1 text-xs rounded-full bg-[#8b5e34]/10 dark:bg-[#d7b693]/10 text-[#8b5e34] dark:text-[#d7b693] border border-[#8b5e34]/30 dark:border-[#d7b693]/30"
+                      key={idx}
+                      className="px-3 py-1 text-xs rounded-full bg-[#8b5e34]/10 dark:bg-[#d7b693]/10 text-[#8b5e34] dark:text-[#d7b693] border border-[#8b5e34]/30 dark:border-[#d7b693]/30"
                     >
-                    {tech}
+                      {tech}
                     </span>
-                ))}
+                  ))}
                 </div>
-            </div>
+              </div>
             )}
 
             {/* Project Links */}
@@ -160,14 +178,14 @@ export default function Projects() {
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-[60] p-4"
-          onClick={() => setSelectedImage(null)}
+          onClick={() => setSelectedImage(null)} // close on outside click
         >
-          <div className="relative w-full max-w-5xl max-h-[90vh]">
+          <div
+            className="relative w-full max-w-5xl max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()} // prevent closing on inside click
+          >
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedImage(null);
-              }}
+              onClick={() => setSelectedImage(null)}
               className="absolute top-3 right-3 text-gray-300 hover:text-white transition"
             >
               <X size={24} />

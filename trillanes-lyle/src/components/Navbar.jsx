@@ -5,6 +5,7 @@ import ThemeToggle from "./ThemeToggle";
 export default function Navbar({ theme, toggleTheme }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
@@ -35,9 +36,23 @@ export default function Navbar({ theme, toggleTheme }) {
     <nav className="sticky top-0 z-50 bg-[#fdf8f3]/80 dark:bg-[#1c1917]/80 backdrop-blur-md border-b border-[#d7b693]/40 dark:border-[#8b5e34]/40 transition-all duration-300">
       <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo / Name */}
-        <h1 className="text-xl font-bold text-[#8b5e34] dark:text-[#d7b693]" title="loves Joize Barbie dela Cruz">
-          Lyle Trillanes
-        </h1>
+        <div
+          className="relative cursor-pointer"
+          onMouseEnter={() => setShowTooltip(true)}
+          onMouseLeave={() => setShowTooltip(false)}
+          onClick={() => setShowTooltip((prev) => !prev)} // toggle on tap
+        >
+          <h1 className="text-xl font-bold text-[#8b5e34] dark:text-[#d7b693]">
+            Lyle Trillanes
+          </h1>
+
+          {/* Tooltip below */}
+          {showTooltip && (
+            <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 bg-[#8b5e34] dark:bg-[#d7b693] text-white dark:text-[#1c1917] text-xs px-2 py-1 rounded whitespace-nowrap z-50 shadow-md">
+              loves Joize Barbie dela Cruz
+            </span>
+          )}
+        </div>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-6">
