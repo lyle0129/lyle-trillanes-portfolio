@@ -16,16 +16,41 @@ export default function Projects() {
   }, [selectedProject, selectedImage]);
 
   // Close modal on Escape key press
+  // Close modal on Escape key press or browser Back button
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         setSelectedProject(null);
         setSelectedImage(null);
+        // Restore history if modal was opened
+        if (window.history.state?.modalOpen) {
+          window.history.back();
+        }
       }
     };
+
+    const handlePopState = () => {
+      // When user presses the back button
+      if (selectedProject || selectedImage) {
+        setSelectedProject(null);
+        setSelectedImage(null);
+      }
+    };
+
+    // When modal opens, push a new state so Back closes it
+    if (selectedProject || selectedImage) {
+      window.history.pushState({ modalOpen: true }, "");
+    }
+
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [selectedProject, selectedImage]);
+
 
   return (
     <section id="projects" className="py-16 px-4 sm:px-8">
@@ -33,27 +58,51 @@ export default function Projects() {
 
       {/* Project Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="bg-[#fdf8f3] dark:bg-[#1f1d1b] p-6 rounded-xl shadow-md border border-[#d9c8b4] dark:border-[#2a2623] flex flex-col justify-between"
-          >
-            <div>
-              <h3 className="text-xl font-semibold mb-2 text-[#3e2f1c] dark:text-[#f4e9dc]">
-                {project.title}
-              </h3>
-              <p className="text-sm text-[#6b4b2f] dark:text-[#d1bfa7] mb-4">
-                {project.description}
-              </p>
+      {projects.map((project, index) => (
+        <div
+          key={index}
+          className="bg-[#fdf8f3] dark:bg-[#1f1d1b] p-6 rounded-xl shadow-md border border-[#d9c8b4] dark:border-[#2a2623] flex flex-col justify-between"
+        >
+          <div>
+            <h3 className="text-xl font-semibold mb-2 text-[#3e2f1c] dark:text-[#f4e9dc]">
+              {project.title}
+            </h3>
+            <p className="text-sm text-[#6b4b2f] dark:text-[#d1bfa7] mb-4">
+              {project.description}
+            </p>
+
+            {/* ✅ Show technologies directly on the card */}
+            {project.technologies?.length > 0 && (
+            <div className="mb-4">
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.slice(0, 3).map((tech, idx) => (
+                  <span
+                    key={idx}
+                    className="px-3 py-1 text-xs rounded-full bg-[#8b5e34]/10 dark:bg-[#d7b693]/10 text-[#8b5e34] dark:text-[#d7b693] border border-[#8b5e34]/30 dark:border-[#d7b693]/30"
+                  >
+                    {tech}
+                  </span>
+                ))}
+                {project.technologies.length > 3 && (
+                  <span className="px-3 py-1 text-xs rounded-full bg-[#8b5e34]/5 text-[#8b5e34] dark:text-[#d7b693] border border-dashed border-[#8b5e34]/30 dark:border-[#d7b693]/30">
+                    +{project.technologies.length - 3} more
+                  </span>
+                )}
+              </div>
             </div>
-            <button
-              onClick={() => setSelectedProject(project)}
-              className="mt-auto bg-[#8b5e34] hover:bg-[#704a29] dark:bg-[#d7b693] dark:hover:bg-[#c2a67e] text-white dark:text-[#1c1917] px-4 py-2 rounded-lg transition-colors"
-            >
-              View Details
-            </button>
+          )}
           </div>
-        ))}
+
+          {/* View Details Button */}
+          <button
+            onClick={() => setSelectedProject(project)}
+            className="mt-auto bg-[#8b5e34] hover:bg-[#704a29] dark:bg-[#d7b693] dark:hover:bg-[#c2a67e] text-white dark:text-[#1c1917] px-4 py-2 rounded-lg transition-colors"
+          >
+            View Details
+          </button>
+        </div>
+      ))}
+
       </div>
 
       {/* Project Details Modal */}

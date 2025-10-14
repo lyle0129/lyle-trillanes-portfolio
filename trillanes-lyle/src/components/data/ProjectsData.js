@@ -34,7 +34,7 @@ const projects = [
     doclink: "https://ieeexplore.ieee.org/abstract/document/11175930",
     gitlink: "https://github.com/lyle0129/Auscultawear.git",
     demolink: "",
-    technologies: ["Zephyr RTOS", "C", "Bluetooth Low Energy", "Mic", "IMU (LSM6DSL)", "Flutter", "Python", "Embedded"],
+    technologies: ["Flutter", "Python", "Embedded C", "Bluetooth Low Energy", "Electret Mic (MAX4466)", "IMU (LSM6DSL)", "Zephyr RTOS",],
   },
   {
     title: "LCD Machine Problem",
@@ -54,7 +54,7 @@ const projects = [
     doclink: "",
     gitlink: "https://github.com/lyle0129/Population-Monitoring.git",
     demolink: "https://sites.google.com/up.edu.ph/room-monitoring",
-    technologies: ["Thingspeak API", "STM32", "mmWave Sensor", "PIR Sensor", "Gas Sensor", "C", "Bare-Metal Programming"],
+    technologies: ["Thingspeak API", "STM32", "Bare-Metal Programming", "mmWave Sensor", "PIR Sensor", "Gas Sensor", "Embedded C"],
   },
   {
     title: "The E-waste Project",
@@ -84,7 +84,7 @@ const projects = [
     doclink: "",
     gitlink: "https://github.com/lyle0129/Cashly.git",
     demolink: "https://cashly-web.vercel.app/login",
-    technologies: ["ReactJS", "ExpressJS", "ClerkAuth", "PostgreSQL", "Tailwind CSS", "NeonDB", "Render", "Vercel"],
+    technologies: ["ReactJS", "ExpressJS", "Tailwind CSS", "Clerk Auth", "PostgreSQL", "NeonDB", "Render", "Vercel"],
   },
   {
     title: "TuldokBenta",
@@ -94,7 +94,7 @@ const projects = [
     doclink: "",
     gitlink: "https://github.com/lyle0129/TuldokBenta.git",
     demolink: "https://tuldokbenta-demo.vercel.app",
-    technologies: ["ReactJS", "ExpressJS", "Simple Auth", "PostgreSQL", "Tailwind CSS", "NeonDB", "Render", "Vercel"],
+    technologies: ["ReactJS", "ExpressJS", "PostgreSQL", "Simple Auth", "Tailwind CSS", "NeonDB", "Render", "Vercel"],
   },
   {
     title: "Website Portfolio",

@@ -3,14 +3,14 @@ import { X, Briefcase, ArrowRight } from "lucide-react";
 
 const experiences = [
   {
-    role: "Full Stack Developer and Shop Manager",
+    role: "Freelance Full Stack",
     company: "Spincredible Laundry Shop",
     date: "2024 – Present",
     highlights: [
-      "Developed a POS system deployed as a web application using HTML, CSS, and JavaScript, which is used in the family business to help keep track of daily sales and inventory.",
+      "Developed a POS system (TuldokBenta) deployed as a web application using React, Express, and PostgreSQL, which is used in the family business to help keep track of daily sales and inventory.",
       "Automated laundry shop workflow and maintained operational integrity through streamlined processes.",
-      "Integrated the application into a Google sheet for better tabulation and visualization of data.",
       "Oversee daily shop operations, including closing procedures, cash handling, and contributing to key business decisions.",
+      "Implemented CI/CD pipelines that constantly updates for the ease of use of the Application.",
     ],
   },
   {
