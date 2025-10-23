@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, Briefcase, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const experiences = [
   {
@@ -68,6 +69,38 @@ const experiences = [
 export default function Experience() {
   const [selectedExp, setSelectedExp] = useState(null);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setSelectedExp(null);
+        // Restore history if modal was opened
+        if (window.history.state?.modalOpen) {
+          window.history.back();
+        }
+      }
+    };
+  
+    const handlePopState = () => {
+      // When user presses the back button
+      if (selectedExp) {
+        setSelectedExp(null);
+      }
+    };
+  
+    // When modal opens, push a new state so Back closes it
+    if (selectedExp) {
+      window.history.pushState({ modalOpen: true }, "");
+    }
+  
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("popstate", handlePopState);
+  
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [selectedExp]);
+  
   return (
     <section id="experience" className="py-16">
       <h2 className="text-3xl font-bold mb-8 text-center">Experience</h2>
@@ -75,11 +108,24 @@ export default function Experience() {
       {/* Experience Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {experiences.map((exp, index) => (
-          <div
+          <motion.div
+          key={index}
+          onClick={() => setSelectedExp(exp)}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.3,
+            ease: "easeOut",
+            delay: index * 0.1, // 👈 optional stagger effect
+          }}
+          viewport={{ once: false, amount: 0.3 }} // 👈 triggers each time card enters
+          className="bg-[#fdf8f3] dark:bg-[#1f1d1b] p-6 rounded-xl shadow-md border border-[#d9c8b4] dark:border-[#2a2623] cursor-pointer hover:translate-y-[-3px] hover:shadow-lg transition"
+        >
+          {/* <div
             key={index}
             onClick={() => setSelectedExp(exp)}
             className="bg-[#fdf8f3] dark:bg-[#1f1d1b] p-6 rounded-xl shadow-md border border-[#d9c8b4] dark:border-[#2a2623] cursor-pointer hover:translate-y-[-3px] hover:shadow-lg transition"
-          >
+          > */}
             <div className="flex items-center gap-3 mb-2">
               <Briefcase className="text-[#8b5e34] dark:text-[#d7b693]" size={20} />
               <h3 className="text-lg font-semibold text-[#3e2f1c] dark:text-[#f4e9dc]">
@@ -101,7 +147,8 @@ export default function Experience() {
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
             </div>
-          </div>
+          {/* </div> */}
+          </motion.div>
         ))}
       </div>
 

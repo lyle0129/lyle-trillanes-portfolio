@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import projects from "./data/ProjectsData";
 import { X, FileText, Github, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -59,10 +60,19 @@ export default function Projects() {
       {/* Project Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {projects.map((project, index) => (
-        <div
-          key={index}
-          className="bg-[#fdf8f3] dark:bg-[#1f1d1b] p-6 rounded-xl shadow-md border border-[#d9c8b4] dark:border-[#2a2623] flex flex-col justify-between"
-        >
+        <motion.div
+        key={index}
+        onClick={() => setSelectedProject(project)}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.3,
+          ease: "easeOut",
+          delay: index * 0.1, // 👈 optional stagger effect
+        }}
+        viewport={{ once: false, amount: 0.6 }} // 👈 triggers each time card enters
+        className="bg-[#fdf8f3] dark:bg-[#1f1d1b] p-6 rounded-xl shadow-md border border-[#d9c8b4] dark:border-[#2a2623] flex flex-col justify-between hover:translate-y-[-3px] hover:shadow-lg transition"
+      >
           <div>
             <h3 className="text-xl font-semibold mb-2 text-[#3e2f1c] dark:text-[#f4e9dc]">
               {project.title}
@@ -78,13 +88,13 @@ export default function Projects() {
                 {project.technologies.slice(0, 3).map((tech, idx) => (
                   <span
                     key={idx}
-                    className="px-3 py-1 text-xs rounded-full bg-[#8b5e34]/10 dark:bg-[#d7b693]/10 text-[#8b5e34] dark:text-[#d7b693] border border-[#8b5e34]/30 dark:border-[#d7b693]/30"
+                    className="px-3 py-1 text-xs rounded-full bg-[#8b5e34]/10 dark:bg-[#d7b693]/10 text-[#8b5e34] dark:text-[#d7b693] border border-[#8b5e34]/30 dark:border-[#d7b693]/30 hover:translate-y-[-3px] hover:bg-[#8b5e34]/20 dark:hover:bg-[#d7b693]/20   transition"
                   >
                     {tech}
                   </span>
                 ))}
                 {project.technologies.length > 3 && (
-                  <span className="px-3 py-1 text-xs rounded-full bg-[#8b5e34]/5 text-[#8b5e34] dark:text-[#d7b693] border border-dashed border-[#8b5e34]/30 dark:border-[#d7b693]/30">
+                  <span className="px-3 py-1 text-xs rounded-full bg-[#8b5e34]/5 text-[#8b5e34] dark:text-[#d7b693] border border-dashed border-[#8b5e34]/30 dark:border-[#d7b693]/30 hover:translate-y-[-3px] hover:bg-[#8b5e34]/20 dark:hover:bg-[#d7b693]/20 transition">
                     +{project.technologies.length - 3} more
                   </span>
                 )}
@@ -100,9 +110,10 @@ export default function Projects() {
           >
             View Details
           </button>
-        </div>
+        
+        {/* </div> */}
+        </motion.div>
       ))}
-
       </div>
 
       {/* Project Details Modal */}

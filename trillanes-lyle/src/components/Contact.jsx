@@ -22,7 +22,7 @@ export default function Contact() {
             className="text-[#8b5e34] dark:text-[#d7b693] hover:text-[#734b2b] dark:hover:text-[#c9a97d] transition transform hover:scale-110"
             aria-label="Email"
           >
-            <Mail size={28} />
+            <Mail size={28} className="transform transition-transform duration-300 group-hover:scale-125"/>
           </a>
           <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs bg-[#8b5e34] dark:bg-[#d7b693] text-white dark:text-[#1c1917] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
             Email
@@ -38,7 +38,7 @@ export default function Contact() {
             className="text-[#8b5e34] dark:text-[#d7b693] hover:text-[#734b2b] dark:hover:text-[#c9a97d] transition transform hover:scale-110"
             aria-label="LinkedIn"
           >
-            <Linkedin size={28} />
+            <Linkedin size={28} className="transform transition-transform duration-300 group-hover:scale-125"/>
           </a>
           <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs bg-[#8b5e34] dark:bg-[#d7b693] text-white dark:text-[#1c1917] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
             LinkedIn
@@ -54,7 +54,7 @@ export default function Contact() {
             className="text-[#8b5e34] dark:text-[#d7b693] hover:text-[#734b2b] dark:hover:text-[#c9a97d] transition transform hover:scale-110"
             aria-label="GitHub"
           >
-            <Github size={28} />
+            <Github size={28} className="transform transition-transform duration-300 group-hover:scale-125"/>
           </a>
           <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs bg-[#8b5e34] dark:bg-[#d7b693] text-white dark:text-[#1c1917] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
             GitHub
@@ -69,7 +69,7 @@ export default function Contact() {
             className="text-[#8b5e34] dark:text-[#d7b693] hover:text-[#734b2b] dark:hover:text-[#c9a97d] transition transform hover:scale-110"
             aria-label="Resume"
           >
-            <FileText size={28} />
+            <FileText size={28} className="transform transition-transform duration-300 group-hover:scale-125"/>
           </a>
           <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs bg-[#8b5e34] dark:bg-[#d7b693] text-white dark:text-[#1c1917] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
             Download Resume
