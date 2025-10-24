@@ -33,8 +33,12 @@ export default function Navbar({ theme, toggleTheme }) {
     }`;
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#fdf8f3]/80 dark:bg-[#1c1917]/80 backdrop-blur-md border-b border-[#d7b693]/40 dark:border-[#8b5e34]/40 transition-all duration-300">
-      <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className="fixed top-1 left-1/2 -translate-x-1/2 z-50 w-[90%] md:w-[90%] lg:w-[90%] 
+      bg-[#fdf8f3]/80 dark:bg-[#1c1917]/80 
+      backdrop-blur-xl border border-[#d7b693]/40 dark:border-[#8b5e34]/40 
+      rounded-2xl shadow-lg transition-all duration-300">
+      <div className="px-6 py-3 flex justify-between items-center">
+
         {/* Logo / Name */}
         <div
           className="relative cursor-pointer"
