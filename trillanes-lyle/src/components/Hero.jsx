@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import resume from '../assets/Resume_Trillanes.pdf'; 
 
 export default function Hero() {
   return (
@@ -44,10 +45,11 @@ export default function Hero() {
           View Projects
         </a>
         <a
-          href="#contact"
+          href={resume}
+          download="Resume_Trillanes.pdf"
           className="px-6 py-3 border border-[#8b5e34] text-[#8b5e34] dark:border-[#d7b693] dark:text-[#d7b693] rounded-xl hover:bg-[#8b5e34]/10 dark:hover:bg-[#d7b693]/10 transition"
         >
-          Contact Me
+          View Resume
         </a>
       </motion.div>
     </section>
