@@ -2,6 +2,18 @@ import { Mail, Linkedin, Github, FileText } from "lucide-react";
 import resume from '../assets/Resume_Trillanes.pdf'; 
 
 export default function Contact() {
+
+  const handleDownload = () => {
+      fetch(resume).then(res =>
+        res.blob().then(blob => {
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = 'Resume_Trillanes.pdf';
+          link.click();
+        })
+      );
+    };
+
   return (
     <section id="contact" className="py-20 text-center">
       <h2 className="text-3xl font-bold mb-6 text-[#8b5e34] dark:text-[#d7b693]">
@@ -64,8 +76,7 @@ export default function Contact() {
         {/* Resume Download */}
         <div className="relative group">
           <a
-            href={resume}
-            download="Resume_Trillanes.pdf"
+            onClick={handleDownload}
             className="text-[#8b5e34] dark:text-[#d7b693] hover:text-[#734b2b] dark:hover:text-[#c9a97d] transition transform hover:scale-110"
             aria-label="Resume"
           >

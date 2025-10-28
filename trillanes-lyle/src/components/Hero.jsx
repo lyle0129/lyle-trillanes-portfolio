@@ -2,6 +2,18 @@ import { motion } from "framer-motion";
 import resume from '../assets/Resume_Trillanes.pdf'; 
 
 export default function Hero() {
+
+  const handleDownload = () => {
+    fetch(resume).then(res =>
+      res.blob().then(blob => {
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = 'Resume_Trillanes.pdf';
+        link.click();
+      })
+    );
+  };
+  
   return (
     <section
       id="hero"
@@ -45,8 +57,7 @@ export default function Hero() {
           View Projects
         </a>
         <a
-          href={resume}
-          download="Resume_Trillanes.pdf"
+          onClick={handleDownload}
           className="px-6 py-3 border border-[#8b5e34] text-[#8b5e34] dark:border-[#d7b693] dark:text-[#d7b693] rounded-xl hover:bg-[#8b5e34]/10 dark:hover:bg-[#d7b693]/10 transition"
         >
           View Resume
