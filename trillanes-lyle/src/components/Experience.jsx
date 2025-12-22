@@ -111,14 +111,14 @@ export default function Experience() {
           <motion.div
           key={index}
           onClick={() => setSelectedExp(exp)}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95, y: 12 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
           transition={{
             duration: 0.3,
             ease: "easeOut",
             delay: index * 0.1, // 👈 optional stagger effect
           }}
-          viewport={{ once: false, amount: 0.3 }} // 👈 triggers each time card enters
+          viewport={{ once: true, amount: 0.3 }} // 👈 triggers each time card enters
           className="bg-[#fdf8f3] dark:bg-[#1f1d1b] p-6 rounded-xl shadow-md border border-[#d9c8b4] dark:border-[#2a2623] cursor-pointer hover:translate-y-[-3px] hover:shadow-lg transition"
         >
           {/* <div
