@@ -83,7 +83,7 @@ const projects = [
     media: [cashly1, cashly2, cashly3, cashly4],
     doclink: "",
     gitlink: "https://github.com/lyle0129/Cashly.git",
-    demolink: "https://cashly-web.vercel.app/login",
+    demolink: "https://cashly-2-0.vercel.app/",
     technologies: ["ReactJS", "ExpressJS", "Tailwind CSS", "Clerk Auth", "PostgreSQL", "NeonDB", "Render", "Vercel"],
   },
   {
