@@ -78,10 +78,13 @@ export default function Experience() {
                 <div className="hidden md:flex w-full items-start">
                   {/* Dot */}
                   <div
-                    className="absolute left-1/2 -translate-x-1/2 z-10 w-9 h-9 rounded-full flex items-center justify-center shadow-md border-2 border-[#fdf8f3] dark:border-[#1c1917] transition-transform duration-300"
+                    className="absolute left-1/2 z-10 w-9 h-9 rounded-full flex items-center justify-center shadow-md border-2 border-[#fdf8f3] dark:border-[#1c1917] transition-transform duration-300"
                     style={{
                       backgroundColor: exp.accentColor,
-                      transform: `translateX(-50%) ${isHovered ? "scale(1.2)" : "scale(1)"}`,
+                      transform: `
+                        translateX(calc(-50% ${isLeft ? "- 12px" : "+ 12px"}))
+                        ${isHovered ? "scale(1.2)" : "scale(1)"}
+                      `,
                     }}
                   >
                     <Icon size={15} color="#fff" />
@@ -98,18 +101,22 @@ export default function Experience() {
                           accentColor={exp.accentColor}
                         />
                       </div>
-                      <div className="w-1/2 pl-10 flex items-center">
-                        <span className="text-xs text-[#8b5e34]/70 dark:text-[#d7b693]/60">
-                          {exp.date}
-                        </span>
+                      <div className="w-1/2 pl-10 flex">
+                        <div className="h-9 flex items-center">
+                          <span className="text-xs text-[#8b5e34]/70 dark:text-[#d7b693]/60">
+                            {exp.date}
+                          </span>
+                        </div>
                       </div>
                     </>
                   ) : (
                     <>
-                      <div className="w-1/2 pr-10 flex justify-end items-center">
-                        <span className="text-xs text-[#8b5e34]/70 dark:text-[#d7b693]/60">
-                          {exp.date}
-                        </span>
+                      <div className="w-1/2 pr-10 flex justify-end">
+                        <div className="h-9 flex items-center">
+                          <span className="text-xs text-[#8b5e34]/70 dark:text-[#d7b693]/60">
+                            {exp.date}
+                          </span>
+                        </div>
                       </div>
                       <div className="w-1/2 pl-10">
                         <TimelineCard
