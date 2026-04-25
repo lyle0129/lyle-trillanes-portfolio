@@ -92,7 +92,8 @@ function DotGrid({ isDark }) {
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
+    const saved = localStorage.getItem("theme");
+    return saved ? saved === "dark" : true;
   });
 
   useEffect(() => {
@@ -111,7 +112,7 @@ function App() {
   function Layout() {
     return (
       <div className="relative bg-[#fdf8f3] text-[#3e2f1c] dark:bg-[#1c1917] dark:text-[#f4e9dc] transition-colors duration-500 min-h-screen">
-        <DotGrid isDark={isDark} />
+        {!window.matchMedia("(hover: none)").matches && <DotGrid isDark={isDark} />}
         <div className="relative z-10">
           <Outlet />
         </div>
