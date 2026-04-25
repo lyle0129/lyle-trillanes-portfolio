@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import projects from "./data/ProjectsData";
-import { X, FileText, Github, ExternalLink } from "lucide-react";
+import { X, FileText, Github, ExternalLink, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function Projects() {
+export default function Projects({ showAll = false }) {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const displayedProjects = showAll ? projects : projects.filter((p) => p.featured);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
@@ -55,11 +58,11 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-16 px-4 sm:px-8">
-      <h2 className="text-3xl font-bold mb-8 text-center">Projects</h2>
+      <h2 className="text-3xl font-bold mb-8 text-center">Featured Projects</h2>
 
       {/* Project Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {projects.map((project, index) => (
+      {displayedProjects.map((project, index) => (
         <motion.div
         key={index}
         onClick={() => setSelectedProject(project)}
@@ -71,9 +74,20 @@ export default function Projects() {
           delay: index * 0.1, // 👈 optional stagger effect
         }}
         viewport={{ once: true, amount: 0.6 }} // 👈 triggers each time card enters
-        className="bg-[#fdf8f3] dark:bg-[#1f1d1b] p-6 rounded-xl shadow-md border border-[#d9c8b4] dark:border-[#2a2623] flex flex-col justify-between hover:translate-y-[-3px] hover:shadow-lg transition"
+        className="bg-[#fdf8f3] dark:bg-[#1f1d1b] rounded-xl shadow-md border border-[#d9c8b4] dark:border-[#2a2623] flex flex-col justify-between hover:translate-y-[-3px] hover:shadow-lg transition overflow-hidden"
       >
-          <div>
+          {/* Thumbnail — only on home page */}
+          {!showAll && project.thumbnail && (
+            <div className="w-full h-44 overflow-hidden">
+              <img
+                src={project.thumbnail}
+                alt={project.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
+
+          <div className="p-6 flex flex-col flex-1">
             <h3 className="text-xl font-semibold mb-2 text-[#3e2f1c] dark:text-[#f4e9dc]">
               {project.title}
             </h3>
@@ -101,7 +115,6 @@ export default function Projects() {
               </div>
             </div>
           )}
-          </div>
 
           {/* View Details Button */}
           <button
@@ -110,11 +123,22 @@ export default function Projects() {
           >
             View Details
           </button>
-        
-        {/* </div> */}
+          </div>
         </motion.div>
       ))}
       </div>
+
+      {/* See All Projects Link */}
+      {!showAll && (
+        <div className="flex justify-center mt-10">
+          <Link
+            to="/projects"
+            className="flex items-center gap-2 px-6 py-3 rounded-xl border border-[#8b5e34]/40 dark:border-[#d7b693]/40 text-[#8b5e34] dark:text-[#d7b693] hover:bg-[#8b5e34] hover:dark:bg-[#d7b693] hover:text-white hover:dark:text-[#1c1917] hover:border-transparent transition font-medium"
+          >
+            See All Projects <ArrowRight size={18} />
+          </Link>
+        </div>
+      )}
 
       {/* Project Details Modal */}
       {selectedProject && (

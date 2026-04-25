@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Experience from "./components/Experience";
+import AllProjectsPage from "./pages/AllProjectsPage";
 
 function DotGrid({ isDark }) {
   const canvasRef = useRef(null);
@@ -89,7 +91,6 @@ function DotGrid({ isDark }) {
 }
 
 function App() {
-  // ✅ Initialize from localStorage (script in index.html already set DOM correctly)
   const [isDark, setIsDark] = useState(() => {
     return localStorage.getItem("theme") === "dark";
   });
@@ -106,23 +107,47 @@ function App() {
 
   const toggleTheme = () => setIsDark((prev) => !prev);
 
-  return (
-    <div className="relative bg-[#fdf8f3] text-[#3e2f1c] dark:bg-[#1c1917] dark:text-[#f4e9dc] transition-colors duration-500 min-h-screen">
-      <DotGrid isDark={isDark} />
-      <div className="relative z-10">
-        <Navbar theme={isDark} toggleTheme={toggleTheme} />
-        <main className="max-w-5xl mx-auto px-6">
-          <Hero />
-          <About />
-          <Projects />
-          <Experience />
-          <Contact />
-        </main>
-        <footer className="text-center text-sm py-6 text-[#8b5e34] dark:text-[#d7b693]">
-          © {new Date().getFullYear()} Lyle Denzell C. Trillanes
-        </footer>
+  // Shared layout wrapping all routes
+  function Layout() {
+    return (
+      <div className="relative bg-[#fdf8f3] text-[#3e2f1c] dark:bg-[#1c1917] dark:text-[#f4e9dc] transition-colors duration-500 min-h-screen">
+        <DotGrid isDark={isDark} />
+        <div className="relative z-10">
+          <Outlet />
+        </div>
       </div>
-    </div>
+    );
+  }
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route
+            path="/"
+            element={
+              <>
+                <Navbar theme={isDark} toggleTheme={toggleTheme} />
+                <main className="max-w-5xl mx-auto px-6">
+                  <Hero />
+                  <About />
+                  <Projects />
+                  <Experience />
+                  <Contact />
+                </main>
+                <footer className="text-center text-sm py-6 text-[#8b5e34] dark:text-[#d7b693]">
+                  © {new Date().getFullYear()} Lyle Denzell C. Trillanes
+                </footer>
+              </>
+            }
+          />
+          <Route
+            path="/projects"
+            element={<AllProjectsPage isDark={isDark} toggleTheme={toggleTheme} />}
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

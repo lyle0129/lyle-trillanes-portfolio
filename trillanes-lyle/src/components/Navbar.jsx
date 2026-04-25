@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
-export default function Navbar({ theme, toggleTheme }) {
+export default function Navbar({ theme, toggleTheme, isProjectsPage = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   const [showTooltip, setShowTooltip] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
-  // 🔹 Highlight section in view
+  // 🔹 Highlight section in view (only on home page)
   useEffect(() => {
+    if (isProjectsPage) return;
     const sections = document.querySelectorAll("section[id]");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -23,11 +26,19 @@ export default function Navbar({ theme, toggleTheme }) {
 
     sections.forEach((section) => observer.observe(section));
     return () => sections.forEach((section) => observer.unobserve(section));
-  }, []);
+  }, [isProjectsPage]);
+
+  const handleNavClick = (e, hash) => {
+    if (isProjectsPage) {
+      e.preventDefault();
+      navigate("/" + hash);
+    }
+    setMenuOpen(false);
+  };
 
   const linkClasses = (id) =>
     `relative transition-colors ${
-      activeSection === id
+      !isProjectsPage && activeSection === id
         ? "text-[#8b5e34] dark:text-[#d7b693] font-semibold after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-[#8b5e34] dark:after:bg-[#d7b693]"
         : "hover:text-[#8b5e34] dark:hover:text-[#d7b693]"
     }`;
@@ -60,16 +71,16 @@ export default function Navbar({ theme, toggleTheme }) {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-6">
-          <a href="#about" className={linkClasses("about")}>
+          <a href="#about" onClick={(e) => handleNavClick(e, "#about")} className={linkClasses("about")}>
             About
           </a>
-          <a href="#projects" className={linkClasses("projects")}>
+          <a href="#projects" onClick={(e) => handleNavClick(e, "#projects")} className={linkClasses("projects")}>
             Projects
           </a>
-          <a href="#experience" className={linkClasses("experience")}>
+          <a href="#experience" onClick={(e) => handleNavClick(e, "#experience")} className={linkClasses("experience")}>
             Experience
           </a>
-          <a href="#contact" className={linkClasses("contact")}>
+          <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")} className={linkClasses("contact")}>
             Contact
           </a>
           <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
@@ -110,16 +121,16 @@ export default function Navbar({ theme, toggleTheme }) {
       >
         <div className="bg-[#fdf8f3] dark:bg-[#1c1917] border-t border-[#d7b693]/40 dark:border-[#8b5e34]/40">
           <div className="flex flex-col gap-4 py-4 px-10">
-            <a href="#about" onClick={toggleMenu} className={linkClasses("about")}>
+            <a href="#about" onClick={(e) => handleNavClick(e, "#about")} className={linkClasses("about")}>
               About
             </a>
-            <a href="#projects" onClick={toggleMenu} className={linkClasses("projects")}>
+            <a href="#projects" onClick={(e) => handleNavClick(e, "#projects")} className={linkClasses("projects")}>
               Projects
             </a>
-            <a href="#experience" onClick={toggleMenu} className={linkClasses("experience")}>
+            <a href="#experience" onClick={(e) => handleNavClick(e, "#experience")} className={linkClasses("experience")}>
               Experience
             </a>
-            <a href="#contact" onClick={toggleMenu} className={linkClasses("contact")}>
+            <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")} className={linkClasses("contact")}>
               Contact
             </a>
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />

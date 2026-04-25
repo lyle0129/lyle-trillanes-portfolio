@@ -31,9 +31,11 @@ const projects = [
     title: "Auscultawear",
     description: "Wearable device for audio-based physiological monitoring.",
     media: [auscultawear1, auscultawear2, auscultawear3],
+    thumbnail: auscultawear1,
     doclink: "https://ieeexplore.ieee.org/abstract/document/11175930",
     gitlink: "https://github.com/lyle0129/Auscultawear.git",
     demolink: "",
+    featured: true,
     technologies: ["Flutter", "Python", "Embedded C", "Bluetooth Low Energy", "Electret Mic (MAX4466)", "IMU (LSM6DSL)", "Zephyr RTOS",],
   },
   {
@@ -44,6 +46,7 @@ const projects = [
     doclink: "",
     gitlink: "https://github.com/lyle0129/CoE-168-Machine-Problem.git",
     demolink: "",
+    featured: false,
     technologies: ["Verilog", "FPGA", "Vivado"],
   },
   {
@@ -51,9 +54,11 @@ const projects = [
     description:
       "Monitoring in-building population in real-time for emergency evacuation.",
     media: [mmwave1, mmwave2, mmwave3],
+    thumbnail: mmwave1,
     doclink: "",
     gitlink: "https://github.com/lyle0129/Population-Monitoring.git",
     demolink: "https://sites.google.com/up.edu.ph/room-monitoring",
+    featured: true,
     technologies: ["Thingspeak API", "STM32", "Bare-Metal Programming", "mmWave Sensor", "PIR Sensor", "Gas Sensor", "Embedded C"],
   },
   {
@@ -64,6 +69,7 @@ const projects = [
     doclink: "",
     gitlink: "https://github.com/lyle0129/TEP-12-Automated-Inventory-Tracking.git",
     demolink: "",
+    featured: false,
     technologies: ["Google Apps Script", "Google Sheets", "JavaScript"],
   },
   {
@@ -74,6 +80,7 @@ const projects = [
     doclink: "",
     gitlink: "https://github.com/lyle0129/To-doro.git",
     demolink: "https://to-doro.vercel.app/",
+    featured: false,
     technologies: ["ReactJS", "CSS", "JavaScript", "Vercel"],
   },
   {
@@ -81,9 +88,11 @@ const projects = [
     description:
       "A cross-platform wallet application deployed as a web app.",
     media: [cashly1, cashly2, cashly3, cashly4],
+    thumbnail: cashly1,
     doclink: "",
     gitlink: "https://github.com/lyle0129/Cashly.git",
     demolink: "https://cashly-2-0.vercel.app/",
+    featured: true,
     technologies: ["ReactJS", "ExpressJS", "Tailwind CSS", "Clerk Auth", "PostgreSQL", "NeonDB", "Render", "Vercel"],
   },
   {
@@ -91,9 +100,11 @@ const projects = [
     description:
       "A user-friendly, self-setup POS system for small businesses.",
     media: [tuldokbenta4, tuldokbenta5, tuldokbenta6, tuldokbenta1, tuldokbenta2, tuldokbenta3],
+    thumbnail: tuldokbenta4,
     doclink: "",
     gitlink: "https://github.com/lyle0129/TuldokBenta.git",
     demolink: "https://tuldokbenta-demo.vercel.app",
+    featured: true,
     technologies: ["ReactJS", "ExpressJS", "PostgreSQL", "Simple Auth", "Tailwind CSS", "NeonDB", "Render", "Vercel"],
   },
   {
@@ -104,6 +115,7 @@ const projects = [
     doclink: "",
     gitlink: "https://github.com/lyle0129/lyle-trillanes-portfolio.git",
     demolink: "https://lyle-trillanes.vercel.app/",
+    featured: false,
     technologies: ["ReactJS", "Tailwind CSS", "Vercel"],
   },
   {
@@ -111,9 +123,11 @@ const projects = [
     description:
       "An online recreation of me and my girlfriend's favorite board game to play.",
     media: [rubiks1, rubiks2, rubiks3, rubiks4],
+    thumbnail: rubiks1,
     doclink: "",
     gitlink: "https://github.com/lyle0129/Rubiks-Race.git",
     demolink: "https://rubiks-race.vercel.app/",
+    featured: true,
     technologies: ["ReactJS", "ExpressJS", "Socket.io", "Tailwind CSS", "Render", "Vercel"],
   },
 ];
