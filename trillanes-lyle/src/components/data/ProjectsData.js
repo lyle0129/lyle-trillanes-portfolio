@@ -11,6 +11,7 @@ import cashly1 from "./projects-images/cashly1.png";
 import cashly2 from "./projects-images/cashly2.png";
 import cashly3 from "./projects-images/cashly3.png";
 import cashly4 from "./projects-images/cashly4.png";
+import cashly5 from "./projects-images/cashly5.png";
 import fpga from "./projects-images/FPGA.mp4";
 import tuldokbenta1 from "./projects-images/tuldokbenta1.png";
 import tuldokbenta2 from "./projects-images/tuldokbenta2.png";
@@ -25,8 +26,54 @@ import rubiks1 from "./projects-images/rubiks1.png";
 import rubiks2 from "./projects-images/rubiks2.png";
 import rubiks3 from "./projects-images/rubiks3.png";
 import rubiks4 from "./projects-images/rubiks4.png";
+import rubiks5 from "./projects-images/rubiks5.png";
+import rubiks6 from "./projects-images/rubiks6.png";
+import apex1 from "./projects-images/ApexDC.png";
+import apex2 from "./projects-images/ApexDC1.png";
+import apex3 from "./projects-images/ApexDC2.png";
+import apex4 from "./projects-images/ApexDC3.png";
+import apex5 from "./projects-images/ApexDC4.png";
+import apex6 from "./projects-images/ApexDC5.png";
+import marci1 from "./projects-images/Marci1.png";
+import marci2 from "./projects-images/Marci2.png";
+import marci3 from "./projects-images/Marci3.png";
+import marci4 from "./projects-images/Marci4.png";
 
 const projects = [
+  {
+    title: "Website Revamp",
+    description: "An improved website of the current website of Marci Metzger.",
+    media: [marci1, marci2, marci3, marci4],
+    thumbnail: marci1,
+    doclink: "",
+    gitlink: "",
+    demolink: "https://junior-wb-applicant-lyle-trillanes.vercel.app",
+    featured: true,
+    technologies: ["ReactJS", "TailwindCSS", "Vercel"],
+  },
+  {
+    title: "Rubiks Race",
+    description:
+      "An online recreation of me and my girlfriend's favorite board game to play.",
+    media: [rubiks1, rubiks2, rubiks3, rubiks4, rubiks5, rubiks6],
+    thumbnail: rubiks1,
+    doclink: "",
+    gitlink: "https://github.com/lyle0129/Rubiks-Race.git",
+    demolink: "https://rubiksrace.online/",
+    featured: true,
+    technologies: ["ReactJS", "ExpressJS", "Socket.io", "Tailwind CSS", "Render", "Vercel"],
+  },
+  {
+    title: "Apex Design & Construction Website",
+    description: "A responsive multi-page website to strengthen the company’s online presence and brand visibility.",
+    media: [apex1, apex2, apex3, apex4, apex5, apex6],
+    thumbnail: apex1,
+    doclink: "",
+    gitlink: "",
+    demolink: "https://apexdesignconstruction.com/",
+    featured: true,
+    technologies: ["NextJS", "Mailtrap", "React", "TailwindCSS", "Vercel"],
+  },
   {
     title: "Auscultawear",
     description: "Wearable device for audio-based physiological monitoring.",
@@ -42,6 +89,7 @@ const projects = [
     title: "LCD Machine Problem",
     description: "Interfacing an LCD with an FPGA without using any libraries.",
     media: [fpga],
+    thumbnail: fpga,
     video: true,
     doclink: "",
     gitlink: "https://github.com/lyle0129/CoE-168-Machine-Problem.git",
@@ -54,7 +102,7 @@ const projects = [
     description:
       "Monitoring in-building population in real-time for emergency evacuation.",
     media: [mmwave1, mmwave2, mmwave3],
-    thumbnail: mmwave1,
+    thumbnail: mmwave3,
     doclink: "",
     gitlink: "https://github.com/lyle0129/Population-Monitoring.git",
     demolink: "https://sites.google.com/up.edu.ph/room-monitoring",
@@ -87,7 +135,7 @@ const projects = [
     title: "Cashly",
     description:
       "A cross-platform wallet application deployed as a web app.",
-    media: [cashly1, cashly2, cashly3, cashly4],
+    media: [cashly1, cashly2, cashly3, cashly4, cashly5],
     thumbnail: cashly1,
     doclink: "",
     gitlink: "https://github.com/lyle0129/Cashly.git",
@@ -100,7 +148,7 @@ const projects = [
     description:
       "A user-friendly, self-setup POS system for small businesses.",
     media: [tuldokbenta4, tuldokbenta5, tuldokbenta6, tuldokbenta1, tuldokbenta2, tuldokbenta3],
-    thumbnail: tuldokbenta4,
+    thumbnail: tuldokbenta6,
     doclink: "",
     gitlink: "https://github.com/lyle0129/TuldokBenta.git",
     demolink: "https://tuldokbenta-demo.vercel.app",
@@ -117,18 +165,6 @@ const projects = [
     demolink: "https://lyle-trillanes.vercel.app/",
     featured: false,
     technologies: ["ReactJS", "Tailwind CSS", "Vercel"],
-  },
-  {
-    title: "Rubiks Race",
-    description:
-      "An online recreation of me and my girlfriend's favorite board game to play.",
-    media: [rubiks1, rubiks2, rubiks3, rubiks4],
-    thumbnail: rubiks1,
-    doclink: "",
-    gitlink: "https://github.com/lyle0129/Rubiks-Race.git",
-    demolink: "https://rubiks-race.vercel.app/",
-    featured: true,
-    technologies: ["ReactJS", "ExpressJS", "Socket.io", "Tailwind CSS", "Render", "Vercel"],
   },
 ];
 

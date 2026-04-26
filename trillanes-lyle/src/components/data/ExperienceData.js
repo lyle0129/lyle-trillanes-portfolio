@@ -1,15 +1,39 @@
 const experiences = [
   {
-    role: "Freelance Full Stack",
-    company: "Spincredible Laundry Shop",
-    date: "2024 – Present",
+    role: "Junior FullStack Engineer",
+    company: "Infoview Technologies",
+    date: "2026 - Present",
     type: "work",
     accentColor: "#8b5e34",
     highlights: [
-      "Developed a POS system (TuldokBenta) deployed as a web application using React, Express, and PostgreSQL, which is used in the family business to help keep track of daily sales and inventory.",
-      "Automated laundry shop workflow and maintained operational integrity through streamlined processes.",
-      "Oversee daily shop operations, including closing procedures, cash handling, and contributing to key business decisions.",
-      "Implemented CI/CD pipelines that constantly updates for the ease of use of the Application.",
+      "Built and standardized reusable frontend components across multiple products, improving code consistency and accelerating development time.",
+      "Refactored legacy backend modules to enhance code readability, maintainability, and overall system performance.",
+      "Collaborated with cross-functional teams to modernize parts of the codebase and reduce technical debt.",
+    ],
+  },
+  {
+    role: "Freelance Frontend Developer",
+    company: "Apex Design and Construction",
+    date: "2026",
+    type: "work",
+    accentColor: "#8b5e34",
+    highlights: [
+      "Designed and developed a responsive multi-page website to strengthen the company’s online presence and brand visibility.",
+      "Implemented basic SEO strategies to improve search engine ranking and discoverability.",
+      "Managed domain setup and deployment, ensuring reliable hosting and smooth website launch.",
+    ],
+  },
+  {
+    role: "Freelance FullStack Developer",
+    company: "Spincredible Laundry Shop",
+    date: "2024 – 2025",
+    type: "work",
+    accentColor: "#8b5e34",
+    highlights: [
+      "Developed and deployed TuldokBenta, a web-based POS system using React, Express, and PostgreSQL to track daily sales and inventory for a family-run business.",
+      "Automated key laundry shop workflows, improving operational efficiency and reducing manual errors.",
+      "Managed day-to-day operations, including cash handling, closing procedures, and contributing to business decisions.",
+      "Implemented CI/CD pipelines to enable continuous updates and improve application reliability and usability.",
     ],
   },
   {
@@ -19,9 +43,9 @@ const experiences = [
     type: "org",
     accentColor: "#8b5e34",
     highlights: [
-      "Facilitated the overall execution of this project from marketing to operations.",
-      "Coordinated project milestones and deliverables.",
-      "Delivered a record-breaking increase in social media reach and interaction with an increase of 15.6K in the total reach breakdown.",
+      "Led end-to-end project execution, overseeing both marketing and operations to ensure successful delivery.",
+      "Coordinated project timelines, milestones, and team deliverables to maintain alignment and efficiency.",
+      "Achieved a record-breaking increase in social media engagement, boosting reach by 15.6K.",
     ],
   },
   {
@@ -32,8 +56,9 @@ const experiences = [
     accentColor: "#8b5e34",
     highlights: [
       "The E-Waste Project (TEP) is an annual event that seeks to address the increasing environmental risks and hazards brought about by the improper disposal of electronic waste.",
-      "Helped in overseeing storage management operations, ensuring proper organization and accessibility.",
-      "Developed an automated inventory management app using Google Appscript and integrated it with Google Sheets and Google Forms.",
+      "Supported logistics operations for an annual e-waste initiative focused on responsible electronic waste disposal.",
+      "Managed storage and inventory systems to ensure efficient organization and accessibility of materials.",
+      "Developed an automated inventory management system using Google Apps Script, integrated with Google Sheets and Forms.",
     ],
   },
   {
@@ -43,10 +68,10 @@ const experiences = [
     type: "org",
     accentColor: "#8b5e34",
     highlights: [
-      "Spearheaded the Finance committee for the Institute of Electrical and Electronics Engineers University of the Philippines Diliman Student Branch.",
-      "Fulfilled to liquefy frozen assets of 2 years in this term, raising the organization's operation equity to more than 500%.",
-      "Guided in the return of merchandise selling as one of its income-generating activities.",
-      "Responsible for securing sponsorships from partner companies with our events.",
+      "Led the Finance Committee, overseeing budgeting, financial planning, and fund allocation for the organization.",
+      "Revitalized inactive funds from the past two years, increasing operational equity by over 500%.",
+      "Reintroduced merchandise sales as a sustainable revenue stream.",
+      "Secured sponsorships and partnerships to support organizational events and initiatives.",
     ],
   },
   {
@@ -56,8 +81,8 @@ const experiences = [
     type: "org",
     accentColor: "#8b5e34",
     highlights: [
-      "Planned and oversaw activities and responsibilities bestowed upon the Training and Development committee.",
-      "Helped with the planning and execution of the 2nd BadAss League Cup.",
+      "Planned and managed training programs and development initiatives for members.",
+      "Co-organized and executed the 2nd BadAss League Cup, ensuring smooth event operations.",
     ],
   },
   {
@@ -67,9 +92,9 @@ const experiences = [
     type: "org",
     accentColor: "#8b5e34",
     highlights: [
-      "Secured 60% of the total funds collected during the fundraising event by successfully closing individual donor contributions.",
-      "Managed external Sponsorships, partnerships, and donations.",
-      "Organized outreach initiatives and provided documentation.",
+      "Secured 60% of total fundraising revenue by successfully closing donor contributions.",
+      "Managed sponsorships, partnerships, and external relations to support organizational initiatives.",
+      "Organized outreach programs and handled event documentation and reporting.",
     ],
   },
 ];
